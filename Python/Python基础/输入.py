@@ -26,7 +26,33 @@ def sys_study():
     import sys
     a = sys.stdin.readline().strip().split()
     return a
-print(sys_study())
+
+"""
+读写文件：
+1.文件对象读取的方法
+    调用 f.write() 时，未使用 with 关键字，或未调用 f.close()，即使程序正常退出，也**可能** 导致 f.write() 的参数没有完全写入磁盘。
+    
+2.使用 json 保存结构化数据
+    JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写。
+    json.dumps	将 Python 对象编码成 JSON 字符串
+    json.loads	将已编码的 JSON 字符串解码为 Python 对象
+    简单的序列化技术可以处理列表和字典
+"""
+def file_json_study():
+    import json
+    x = [1,'simple','list']
+    # json.dumps 用于将 Python 对象编码成 JSON 字符串。
+    # 将数组编码为 JSON 格式数据：
+    json_type_str = json.dumps(x)
+    print(json_type_str)
+    # 使用参数让 JSON 数据格式化输出：
+    x1 = [{'a': 'Runoob', 'b': 7}]
+    json_type_str1 = json.dumps(x1,sort_keys=True,indent=4,separators = (',',':'))
+    print(json_type_str1)
+    # json.loads 用于解码 JSON 数据。该函数返回 Python 字段的数据类型。
+    data = json.loads(json_type_str1)
+    print(data)
+file_json_study()
 
 
 
